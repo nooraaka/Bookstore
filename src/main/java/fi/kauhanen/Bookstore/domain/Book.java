@@ -1,11 +1,24 @@
 package fi.kauhanen.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	private String 	title;
 	private String author;
 	private int year;
 	private String isbn;
 	private int price;
+	
+	public Book() {
+		
+	}
 	
 	public Book(String title, String author, int year, String isbn, int price) {
 		super();
@@ -14,6 +27,14 @@ public class Book {
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -54,12 +75,6 @@ public class Book {
 
 	public void setPrice(int price) {
 		this.price = price;
-	}
-
-	@Override
-	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
 	}
 	
 	
